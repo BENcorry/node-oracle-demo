@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo for node</title>
+  <link rel="stylesheet" href="/lib/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div id="app" class="container g-mn " style="padding: 10px 0;">
+  <div style="padding-bottom: 10px;">
+    <button class="btn btn-primary" @click="add">新增</button>
+    <button class="btn btn-primary" @click="update">修改</button>
+    <button class="btn btn-danger" @click="del">删除</button>
+  </div>
+  <div class=" ">
+    <div class=" col-md-4" style="height: 95vh; overflow: auto">
+      <div class="ztree" id="ztree1"></div>
+    </div>
+    <div class="g-right col-md-8" style="height: 95vh; overflow: auto">
+      <table class="table">
+        <tr>
+          <td>名称</td>
+          <td>编码</td>
+          <td>操作</td>
+        </tr>
+        <tr v-for="o in list">
+          <td v-text="o.name"></td>
+          <td v-text="o.chr_code"></td>
+          <td>
+            <button class="btn btn-danger" @click="delList(o)">删除</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade " id="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          新增
+          <span class="close" data-dismiss="modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">要素编码</label>
+              <div class="col-sm-10">
+                <input type="text" name="chr_code" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">要素名称</label>
+              <div class="col-sm-10">
+                <input type="text" name="chr_name" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">父级ID</label>
+              <div class="col-sm-10">
+                <input type="text" name="pid" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">名称</label>
+              <div class="col-sm-10">
+                <input type="text" name="name" class="form-control">
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary"  @click="saveData" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/lib/jquery-1.12.3.min.js"></script>
+<script src="/lib/zTree_v3/js/jquery.ztree.core.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+<script src="/lib/vue.js"></script>
+<script>
+  var clickNode,saveFlag = '0' ;//存储每个被点击的node节点  saveFlag  : 0 新增  1 更新
+  var treeSetting = {
+    data: {
+      simpleData: {
+        enable: true,
+        idKey: 'id',
+        pIdKey: 'pid',
+        rootPId: null
+      }
+    },
+    callback: {
+      onClick: function (e, treeId, treeNode) {
+        console.log(treeNode);
+        clickNode = treeNode;
+        vm.list = treeNode.children && treeNode.children.length ? treeNode.children : [treeNode]
+      },
+    },
+  }
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      list: [],
+      rgList: [],
+    },
+    methods: {
+      add: function () {
+        if(clickNode.id  && clickNode.isParent) {
+          $('input[name="pid"]').val(clickNode.id);
+          $('#modal').modal('show');
+          saveFlag = '0';
+        } else {
+          alert('请选择要添加的父节点')
+        }
+      },
+      del: function () {
+        var data = {
+          chr_id:  clickNode.id
+        }
+        console.log(data.chr_id);
+        if(data.chr_id) {
+          $.ajax({
+            url: '/df/elementConfig/rgDelete.do',
+            type: 'get',
+            data: data.chr_id,
+            contentType: 'application/json',
+            success() {
+              console.log('删除成功')
+              getRg()
+              clearAdd()
+            },
+            error() {
+            }
+          })
+        } else {
+          alert('请选择你要删除的节点！')
+        }
+
+      },
+
+      delList: function (o) {
+        console.log(o);
+        clickNode = o;
+        this.del()
+      },
+
+      update: function () {
+        if(clickNode.id  && !clickNode.isParent) {
+          $('input[name="chr_name"]').val('1111');
+          $('input[name="chr_code"]').val(clickNode.chr_code);
+          $('input[name="pid"]').val(clickNode.pid);
+          $('input[name="name"]').val(clickNode.name);
+          $('#modal').modal('show');
+          saveFlag = '1';
+        } else {
+          alert('请选择要修改的节点')
+        }
+        var data = {
+          chr_name: '测试地区2',
+          chr_code: '10000',
+          parent_id: 'CE2C0208C314405FB04173014C2BCE96', // 6529
+          level_num: 3,
+          enabled: 1,
+          chr_id: '{0A02D3DF-596B-41B1-B94C-42F087D690E4}',
+        }
+       /* $.ajax({
+          url: '/df/elementConfig/rgUpdate.do',
+          type: 'POST',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          success(data) {
+            console.log('修改成功')
+            console.log(data)
+          },
+          error() {
+          }
+        })*/
+      },
+      
+      saveData: function () {
+        var data = {
+          chr_name: $('input[name="chr_name"]').val(),
+          chr_code: $('input[name="chr_code"]').val(),
+          parent_id: $('input[name="pid"]').val(),
+          level_num: 3,
+          enabled: 1,
+          chr_id: '{0A02D3DF-596B-41B1-B94C-42F087D690E4}',
+        }
+        if(saveFlag == '0') {
+          //保存方法
+          $.ajax({
+            url: '/df/elementConfig/rgAdd.do',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success(map) {
+              console.log(map)
+              if(map.errorCode == '0') {
+                alert('添加成功')
+                getRg()
+                clearAdd()
+                return
+              }
+             alert('保存失败')
+            },
+            error() {
+            }
+          })
+        } else {
+          //更新方法
+          data.chr_id = clickNode.id
+          $.ajax({
+            url: '/df/elementConfig/rgUpdate.do',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success(map) {
+              if(map.errorCode == '0') {
+                alert('修改成功')
+                getRg()
+                clearAdd()
+                return
+              }
+              alert('修改失败')
+            }
+          })
+        }
+        
+      }
+    },
+    mounted: function () {
+      getRg()
+    },
+    watch: {
+      rgList: function (list) {
+        this.$nextTick(function () {
+          $.fn.zTree.init($('#ztree1'), treeSetting, list)
+          var treeObj = $.fn.zTree.getZTreeObj("ztree1");
+          if(clickNode != undefined ) {
+            treeObj.selectNode(clickNode);
+          }
+        })
+      },
+    },
+  })
+
+  function getRg() {
+    $.ajax({
+      url: '/df/elementConfig/getElementSourceTree.do',
+      success(data) {
+        vm.rgList = data.treeData;
+      },
+      error() {
+      }
+    })
+  }
+
+  function clearAdd() {
+    $('#modal input').val('');
+    vm.list = []
+  }
+
+</script>
+</body>
+</html>

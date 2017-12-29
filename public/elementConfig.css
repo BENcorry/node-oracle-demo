@@ -1,0 +1,89 @@
+html {
+    height: 100%;
+}
+.header {
+    width: 100%;
+    background: #fff;
+    height: 50px;
+}
+
+.menubody {
+	width: 100%;
+    background: #fff;
+}
+
+.mainBackground {
+	background:#b4dcff;
+}
+.backcolor {
+	background:#ffffff;
+}
+.bodyBackgroud {
+	background:#ffffff;
+	min-height:450px;
+	margin: 0 auto;
+	padding: 10px;
+}
+.headerSize {
+    width: 95%;
+	height:45px;
+	margin: 0 auto;
+}
+.bodySize{
+	width: 95%;
+	margin: 0 auto;
+	padding: 20px;
+}
+.menuInput h {
+	font-size:14px;
+	color: #111111;
+	display: inline-block;
+	font-family: "Î¢ÈíÑÅºÚ";
+	margin-top: 15px; 
+	margin-left: 15px;
+}
+
+.menu-control {
+    margin-top: -23px;
+    width: 200px;
+    margin-left: 80px;
+}
+.addView-control {
+	width: 150px;
+    height: 28px !important;
+}
+
+
+
+.tree-block {
+	width:300px;
+	height:530px;
+	border:1px #e5e5e5 solid;
+}
+.menuTree {
+	height: 480px;
+	overflow: auto;
+}
+
+.menu-quickquery {
+	background:#fff;
+	height: 40px;
+	padding: 10px;
+}
+
+.quickquery-Input {
+	padding-right: 40px;
+}
+.query-img {
+	margin-top: -54px;
+    margin-left: 250px;
+    cursor: pointer;
+}
+
+.enablecheck {
+	padding-left: 15px;
+}
+
+.star-color {
+	color:red;
+}

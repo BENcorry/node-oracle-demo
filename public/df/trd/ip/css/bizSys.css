@@ -1,0 +1,405 @@
+/*
+ * 此css包括按钮、表格、输入框等样式与财政平台2.0统一
+*/
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+/*
+*基于bootstrap的输入框样式修改
+*/
+input.form-control,select.form-control {
+	border-radius: 4px;
+	padding: 2px 2px;
+	padding-left: 7px;
+	box-shade: 0px;
+	-webkit-box-shadow: none;
+	height: 30px;
+	line-height: 30px;
+	border:solid 1px #bababa;
+}
+input.form-control:focus {
+	box-shade: 0px;
+	-webkit-box-shadow: none;
+	box-shadow: 0 0 0 2px #E6F4FD;
+}
+
+.input-group-addon {
+	padding: 3px 5px;
+}
+/*补充样式 调整自动生成样式 start*/
+.fleft{
+	float:left !important;
+}
+.glyphicon {
+	color:#999999;
+    font-family: 'Glyphicons Halflings' !important;
+}
+.glyphicon:hover{
+	color:#108EE9;
+}
+.ip-to-font{
+	padding: 0px;
+    text-align: center;
+    width: 30px;
+    line-height: 28px;
+}
+
+input.ip-form-input:hover{
+	border:solid 1px #108EE9;
+}
+input.ip-form-input:focus {
+	box-shade: 0px;
+	-webkit-box-shadow: none;
+	box-shadow: 0 0 0 2px #E6F4FD;
+}
+.has-error .form-control{
+	border:solid 1px #F04134;
+}
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label{
+	color:#F04134;
+}
+/*补充样式 调整自动生成样式 end*/
+label.text-right {
+	height: 30px;
+	line-height: 30px;
+}
+/*
+*按钮样式
+*/
+.btn {
+	border: 1px solid #108EE9;
+	line-height: 14px;
+	padding: 6px 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: Microsoft YaHei;
+	color: #499bed;
+	border-radius: 4px;
+}
+
+.btn-primary {
+	background: #108EE9;
+	color: #fff;
+}
+.btn-primary:active {
+	background: #0E77CA;
+	border: 1px solid #0E77CA;
+}
+.btn-primary:hover,.btn-primary:focus {
+	background: #49A9EE;
+	border: 1px solid #49A9EE;
+	color: #fff;
+}
+
+.btn-primary[disabled] {
+	background: #f2f9ff;
+	border: 1px solid #d9e9f6;
+	color: #d9e9f6;
+}
+
+.btn-default {
+	color: #333;
+	background: #fff;
+	border: 1px solid #bababa;
+	border-radius: 4px;
+}
+
+.btn-default:hover {
+	background-color: #fff;
+	border-color: #008FF0;
+	color:#008FF0;
+}
+
+.btn-default:active {
+	background-color: #fff;
+	border-color: #0E77CA ;
+	color:#0E77CA ;
+}
+
+.btn-danger {
+	color: #fff;
+	background-color: #F04134;
+	border-color: #F04134;
+}
+
+.btn-danger:hover {
+	background: #F46E65;
+	border-color: #F46E65;
+}
+
+.btn-danger:active {
+	background-color: #fff;
+	border-color: #D73435;
+	color:#D73435;
+}
+/*
+ * 对iuap的grid样式修改与支付系统统一
+*/
+.u-grid-content-td-div {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.u-grid tbody tr:last-child td {
+	border-bottom-width: 1px;
+}
+.u-grid-content-left.u-grid-content-left-sum.u-grid-content-left-sum-first>div:last-child {
+	border-bottom-width: 1px;
+}
+.u-grid-content-num {
+	/*border-right: 0;*/
+}
+.u-grid-header-multi-select,.u-grid-content-multiSelect {
+	border-right: 1px solid #cecece;
+	/*border-left: 1px solid #cecece;*/
+}
+.u-grid-content-multiSelect:nth-child(even) {
+	background-color: #f8f8f8;
+}
+
+.u-grid-header-th {
+	/*height: 32px;*/
+	background: #E5E5E5;
+	text-align: center;
+	border-color:#d9d9d9;
+}
+
+.u-grid-header-link {
+	border-right: #cecece 1px solid;
+	border-bottom: 0px solid #e5e5e5;
+	/*height: 36px;*/
+	/*line-height: 36px;*/
+	background-color: #E5E5E5;
+	text-align: center !important;
+}
+
+.u-grid-header-th>div:hover {
+	background: none;
+}
+
+.u-grid td {
+	/*height: 32px;*/
+	/*line-height: 32px;*/
+	border-top: 0px #e5e5e5 solid;
+	border-left: 0px #e5e5e5 solid;
+	border-right: 1px #d9d9d9 solid;
+}
+.u-grid-content-sum-row td {
+    border-right: 0px #d9d9d9 solid;
+}
+/*.u-grid tr:hover {
+	background-color: #D2ECFF !important;
+}*/
+
+.u-grid-content-sel-row {
+	background-color: #add8f7 !important;
+}
+
+.u-grid tr[role="row"]:nth-child(even) {
+	background-color: #f8f8f8;
+}
+
+/*.u-grid-content-focus-row {
+	background-color: #f4f8b6 !important;
+}*/
+
+.u-grid-content-num {
+	font-size: 14px;
+	/*border-right: none;*/
+}
+
+.u-grid-content-num:nth-child(even) {
+	background-color: #f8f8f8;
+}
+
+.u-grid-header-num {
+	border-right: 1px solid #cecece;
+	background-color: #E5E5E5;
+}
+
+.u-grid-checkbox-outline {
+	top: 10px;
+	left: 12px;
+}
+
+.u-grid-header-left {
+	background-color: #E5E5E5;
+}
+.u-grid-content-left {
+	background: #fff;
+	/*top: 32px;*/
+}
+/*
+*标签页样式
+*/
+.nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus
+	{
+	background-color: #108EE9;
+	color: #fff;
+	border:none;
+}
+
+.nav-tabs>li {
+	margin-bottom: 0px;
+}
+
+.nav-tabs>li>a {
+	line-height: 1.028571;
+    color: #333;
+    padding: 8px 13px;
+    border: none;
+    background-color: #D9D9D9;
+}
+
+.nav-tabs > li > a:hover {
+	background-color: #D9D9D9;
+}
+
+.nav-tabs {
+	border-bottom: 1px solid #108EE9;
+	padding-left: 8px;
+}
+
+
+/*
+*分页样式修改
+*/
+.u-pagination>.active>a,.u-pagination>.active>span,.u-pagination>.active>a:hover,.u-pagination>.active>span:hover,.u-pagination>.active>a:focus,.u-pagination>.active>span:focus
+	{
+	z-index: 2;
+	cursor: default;
+	background-color: #1871C1;
+	border-color:#D9D9D9;
+	color: #fff;
+}
+.u-pagination > li > a, .u-pagination > li > span{
+	padding:4px 11px;
+}
+.pagination-state > .page_z{
+	height: 30px;
+	border-color:#D9D9D9;
+}
+.pagination-state > .page_j{
+	height: 30px;
+	border-radius: 4px;
+	border-color:#D9D9D9;
+}
+.pagination-state > .pagination-jump{
+	margin:0 0 0 10px;
+	height: 30px;
+	border-radius: 4px;
+	border-color:#D9D9D9;
+	vertical-align: middle;
+}
+.pagination-state > .pagination-jump:hover {
+	background-color: #fff;
+	border-color: #008FF0;
+	color:#008FF0;
+}
+.u-pagination{
+	margin: 5px 0 5px 5px;
+}
+/*模态框*/
+.modal-header {
+	padding: 7px 15px;
+	border-radius: 6px 6px 0px 0px;
+	background: #1871C1;
+	color: #fff;
+}
+
+.modal-title {
+	font-size: 14px;
+}
+
+.modal-header .close {
+	color: #fff;
+	font-size: 27px;
+	font-weight: normal;
+	margin-top: -8px;
+	margin-right: -10px;
+	opacity: 1;
+}
+/*
+ 辅助录入数 业务系统区分与平台的样式
+*/
+#myModalTree .top-button {
+	background: #4A90E2;
+	color: #FFFFFF;
+}
+.bodey-bg-f8f8f8{
+	background-color:#f8f8f8;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{
+	font-size: 16px;
+}
+
+.ip-pop-success{
+	color:#00A854;
+	padding:5px 5px 0 0;
+}
+.ip-pop-success:hover {
+	color: #00A854;
+}
+
+.ip-pop-error{
+	color:#F04134;
+	padding:5px 5px 0 0;
+}
+.ip-pop-error:hover{
+	color:#F04134;
+}
+
+.ip-pop-info{
+	color:#FFBF00;
+	padding:5px 5px 0 0;
+}
+.ip-pop-info:hover {
+	color: #FFBF00;
+}
+/* 清空文本框按钮样式 */
+.modal-input-group {
+	position:relative;
+}
+.input-control-feedback{
+	position:absolute;
+	color: red;
+	z-index: 2;
+    display: block;
+    width: 15px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    cursor: pointer;
+    top: 1px;
+    right:0;
+    display:none;
+}
+.input-group .input-control-feedback{
+	right:28px;
+}
+.modal-input-group:hover .input-control-feedback{
+	display:block;
+	background:#fff;
+}
+.fun-operate a {
+	margin-left: 2px;
+	margin-right: 5px;
+}
+.fun-operate a:hover {
+	border: 1px solid #d9d9d9;
+}
+.uf-arrow-up:before {
+	content: "\e638";
+}
+.uf-arrow-down:before {
+    content: "\e639";
+}
+.u-grid-header-sort-span {
+	font-size: 20px;
+}
+.rowClear{
+	margin-left:0;
+	margin-right:0;
+}

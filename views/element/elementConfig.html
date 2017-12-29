@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>数据字段设置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="/elementConfig.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody" class="menubody">
+			<div class="bodySize row">
+				<div class='tree-block col-md-4'>
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询"
+								aria-describedby="basic-addon1"
+								data-bind="event:{keyup:quickQuery}"
+								onkeydown='if(event.keyCode==13){menuTreeNext();}'
+								id="quickquery"> <span class="input-group-addon"
+								onclick="menuTreeNext()"><span
+								class="glyphicon glyphicon-search"></span> </span>
+						</div>
+					</div>
+					<div class="menuTree">
+						<div id="menuConfigTree" class="ztree"
+							u-meta='{"id":"menuConfigTree1","data":"treeDataTable","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+				<div class='menu-tabs col-md-8'>
+					<div id="gridpanel">
+						<div style="height: 40px;">
+							<button id="addViewBtn" type="button"
+								class="btn btn-primary add-btn" data-toggle="modal"
+								data-bind="click: addbtn">新&nbsp;增</button>
+							<button id="editViewBtn" type="button"
+								class="btn btn-primary add-btn" data-toggle="modal"
+								data-bind="click: editbtn">修&nbsp;改</button>
+							<button id="delViewBtn" type="button"
+								class="btn btn-danger del-btn" data-bind="click: delbtn">删&nbsp;除</button>
+						</div>
+						<div type="text" class="menu-grid"
+							u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":480,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+							<div
+								options='{"field":"ele_code","dataType":"String","title":"编码","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_name","dataType":"String","title":"名称","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_colname","dataType":"String","title":"字段名","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_type","dataType":"String","title":"字段类型","editOptions":{"id":"combobox","type":"combo","datasource":"comItems"},"editType":"combo","renderType":"comboRender","width": 150}'></div>
+							<div
+								options='{"field":"ele_format","dataType":"String","title":"字段大小","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"paratype","dataType":"String","title":"输入类型","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems1"},"editType":"combo","renderType":"comboRender","width": 150}'></div>
+							<div
+								options='{"field":"parameter","dataType":"String","title":"参数","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"default_value","dataType":"String","title":"默认值","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"creattime","dataType":"String","title":"时间","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"sys_id","dataType":"String","title":"子系统","editOptions":{"id":"combobox2","type":"combo","datasource":"comItems2"},"editType":"combo","renderType":"comboRender","width": 150}'></div>
+
+						</div>
+					</div>
+					<div id="formpanel" style="display: none;">
+						<div style="height: 40px;">
+							<button id="addViewBtn1" type="button"
+								class="btn btn-primary add-btn" data-toggle="modal"
+								data-bind="click: addbtn">新&nbsp;增</button>
+							<button id="editViewBtn1" type="button"
+								class="btn btn-primary add-btn" data-toggle="modal"
+								data-bind="click: editbtn2">修&nbsp;改</button>
+						</div>
+						<div class="modal-body clearfix">
+							<div class="form-group clearfix">
+								<input type="hidden" class="form-control" id="ele_id1">
+								<input type="hidden" class="form-control" id="old_code1">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>编码:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="ele_code1"
+										readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>名称:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="ele_name1"
+										readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>字段名:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="ele_colname1"
+										readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>字段类型:</label>
+								<div class="col-md-8">
+									<select id="ele_type1" class="form-control" readonly="readonly"
+										disabled="disabled">
+										<option value="1">字符串</option>
+										<option value="2">数字</option>
+										<option value="3">时间</option>
+										<option value="4">金额</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>字段大小:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="ele_format1"
+										onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字"
+										readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>录入类型:</label>
+								<div class="col-md-8">
+									<select id="paratype1" class="form-control" readonly="readonly"
+										disabled="disabled" onchange="orgTypeChange1(this)">
+										<option value="1">录入</option>
+										<option value="2">下拉框</option>
+										<option value="3">单选</option>
+										<option value="4">录入</option>
+										<option value="5">辅助树</option>
+										<option value="6">时间</option>
+									</select>
+								</div>
+							</div>
+							<div id="para1" class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;"><span
+									class="star-color">*</span>参数:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="parameter1"
+										readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;">默认值:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="default_value1"
+										readonly="readonly">
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;">子系统:</label>
+								<div class="col-md-8">
+									<select class="form-control" id="sys_id1" readonly="readonly"
+										disabled="disabled">
+
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group clearfix">
+								<label class="col-md-4 control-label" style="font-size: 15px;">默认列:</label>
+								<div class="col-md-8">
+									<select class="form-control" id="is_sysdefault"
+										readonly="readonly" disabled="disabled">
+										<option value="0">非默认列</option>
+										<option value="1">默认列</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- addModal -->
+	<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增要素字段</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>编码:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_code">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>字段名:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_colname">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>字段类型:</label>
+						<div class="col-md-8">
+							<select id="ele_type" class="form-control">
+								<option value="1">字符串</option>
+								<option value="2">数字</option>
+								<option value="3">时间</option>
+								<option value="4">金额</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>字段大小:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_format"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>录入类型:</label>
+						<div class="col-md-8">
+							<select id="paratype" class="form-control"
+								onchange="orgTypeChange(this)">
+								<option value="1">录入</option>
+								<option value="2">下拉框</option>
+								<option value="3">单选</option>
+								<option value="6">时间</option>
+								<option value="5">辅助树</option>
+							</select>
+						</div>
+					</div>
+					<div id="para" class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>参数:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="parameter">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;">默认值:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="default_value">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;">子系统:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="sys_id">
+
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- addModal -->
+	<div class="modal fade" id="addRoleModal1" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改要素字段</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<input type="hidden" class="form-control" id="ele_id">
+					<input type="hidden" class="form-control" id="old_code">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>编码:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_code2">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_name2">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>字段名:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_colname2" disabled="disabled">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>字段类型:</label>
+						<div class="col-md-8">
+							<select id="ele_type2" class="form-control">
+								<option value="1">字符串</option>
+								<option value="2">数字</option>
+								<option value="3">时间</option>
+								<option value="4">金额</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>字段大小:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="ele_format2"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>录入类型:</label>
+						<div class="col-md-8">
+							<select id="paratype2" class="form-control"
+								onchange="orgTypeChange2(this)">
+								<option value="1">录入</option>
+								<option value="2">下拉框</option>
+								<option value="3">单选</option>
+								<option value="6">时间</option>
+								<option value="5">辅助树</option>
+							</select>
+						</div>
+					</div>
+					<div id="para2" class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;"><span
+							class="star-color">*</span>参数:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="parameter2">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;">默认值:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="default_value2">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label" style="font-size: 15px;">子系统:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="sys_id2">
+
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure2">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="/elementConfig.js"></script>
+</html>

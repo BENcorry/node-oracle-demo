@@ -1,0 +1,1 @@
+select a.* from MA_ELE_RG a where a.set_year = '2017' and a.rg_code = '3700' 

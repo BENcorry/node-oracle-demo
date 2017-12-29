@@ -1,0 +1,674 @@
+.ip-header-bg {
+	background-color: #1B8CF2;
+}
+.ip-header-logo {
+	background:-moz-linear-gradient(left,#48a3f4,#167cdb);/*Mozilla*/
+	background:-webkit-gradient(linear,0 50%,100% 50%,from(#48a3f4),to(#167cdb));/*Old gradient for webkit*/
+	background:-webkit-linear-gradient(left,#48a3f4,#167cdb);/*new gradient for Webkit*/
+	background:-o-linear-gradient(left,#48a3f4,#167cdb); /*Opera11*/
+}
+.ip-header-menu-btn:hover {
+	background-color: #1871C1;
+}
+.hnavs .sub_nav_1 dd a:hover {
+	background-color: #1871C1;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	background-color: #108EE9;
+}
+.nav-tabs {
+	border-bottom: 1px solid #108EE9;
+}
+/*按钮文字颜色 文字图标共用*/
+.ip-font-color {
+	color: #1871C1;
+}
+/*12-1 带菜单的图标按钮组*/
+.icon-buttons .icon-box{
+	display: inline-block;
+    position: relative;
+    padding: 2px 5px 2px 25px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.icon-buttons .icon-box:hover {
+	background: #F5FBFF;
+	border: 1px solid #108EE9;
+	/* padding: 1px 4px 1px 24px; */
+}
+/*图标背景图片*/
+.icon-collection{
+	background: url(./images/iconbtn.png) no-repeat;
+}
+.icon-buttons .iconbtn{
+	display: inline-block;
+	background: url(./images/iconbtn.png) no-repeat;
+	height: 15px;
+	width: 15px;
+	position: absolute;
+    left: 5px;
+    top: 5px;
+}
+.icon-buttons .icon-enter{
+	background-position: -126px -9px;
+}
+.icon-buttons .icon-copy{
+	background-position: -154px -9px;
+}
+.icon-buttons .icon-in{
+	background-position: -180px -35px;
+}
+.icon-buttons .icon-send{
+	background-position: -180px -9px;
+}
+.icon-buttons .icon-del{
+	background-position: -204px -9px;
+}
+.icon-buttons .icon-print{
+	background-position: -126px -35px;
+}
+.icon-buttons .icon-out{
+	background-position: -154px -35px;
+}
+.icon-buttons .icon-revoke{
+	background-position: -127px -61px;
+}
+.icon-buttons .icon-examine{
+	background-position: -156px -94px;
+}
+.icon-buttons .icon-back{
+	background-position: -154px -61px;
+}
+.icon-buttons .icon-cancel-examine{
+	background-position: -181px -94px;
+}
+.icon-buttons .icon-effect{
+	background-position: -205px -35px;
+}
+.icon-buttons .icon-operationlog{
+	background-position: -127px -94px;
+}
+
+.icon-buttons .icon-revoke-approval{
+	background-position: -205px -61px;
+}
+.icon-buttons .icon-reception{
+	background-position: -155px -127px;
+}
+.icon-buttons .icon-all-send{
+	background-position: -181px -61px;
+}
+.icon-buttons .icon-connection{
+	background-position: -156px -158px;
+}
+.icon-buttons .icon-consult{
+	background-position: -183px -127px;
+}
+.icon-buttons .icon-report{
+	background-position: -182px -158px;
+}
+.icon-buttons .icon-situation{
+	background-position: -127px -127px;
+}
+.icon-buttons .icon-release{
+	background-position: -127px -158px;
+}
+.icon-buttons .icon-lot-set{
+	background-position: -205px -158px;
+}
+
+.icon-buttons .icon-to-void{
+	background-position: -127px -186px;
+}
+.icon-buttons .icon-sign-censorship{
+	background-position: -156px -186px;
+}
+.icon-buttons .icon-batch-signature{
+	background-position: -182px -186px;
+}
+.icon-buttons .icon-revocation-signature{
+	background-position: -156px -216px;
+}
+.icon-buttons .icon-initial-signature{
+	background-position: -182px -216px;
+}
+.icon-buttons .icon-generate{
+	background-position: -127px -216px;
+}
+.icon-buttons .icon-enclosure{
+	background-position: -204px -186px;
+}
+.icon-buttons .icon-previews{
+	background-position: -205px -216px;
+}
+.icon-buttons .icon-cancel-print{
+	background-position: -230px -35px;
+}
+.icon-buttons .icon-batch-sign{
+	background-position: -127px -242px;
+}
+.icon-buttons .icon-send-out{
+	background-position: -156px -243px;
+}
+.icon-buttons .icon-sign-send{
+	background-position: -182px -244px;
+}
+.icon-buttons .icon-register{
+	background-position: -205px -242px;
+}
+.icon-buttons .icon-handle{
+	background-position: -127px -271px;
+}
+.icon-buttons .icon-feedback{
+	background-position: -156px -271px;
+}
+.icon-buttons .icon-circulate-notice{
+	background-position: -182px -270px;
+}
+.icon-buttons .icon-recover{
+	background-position: -206px -271px;
+}
+.icon-buttons .icon-autograph{
+	background-position: -127px -296px;
+}
+.icon-buttons .icon-cancel-signature{
+	background-position: -156px -296px;
+}
+.icon-buttons .icon-query-state{
+	background-position: -182px -296px;
+}
+.icon-buttons .icon-download{
+	background-position: -206px -296px;
+}
+.icon-buttons .icon-back-entry{
+	background-position: -127px -321px;
+}
+.icon-buttons .icon-clearing-bank-amendment{
+	background-position: -156px -321px;
+}
+.icon-buttons .icon-payment-summary{
+	background-position: -182px -321px;
+}
+.icon-buttons .icon-payment-account-modification{
+	background-position: -206px -320px;
+}
+.icon-buttons .icon-refresh{
+	background-position: -127px -374px;
+}
+.icon-buttons .icon-view-details{
+	background-position: -127px -349px;
+}
+.icon-buttons .icon-refund-redial{
+	background-position: -154px -349px;
+}
+.icon-buttons .icon-batch-deactivation{
+	background-position: -182px -350px;
+}
+.icon-buttons .icon-cancellation{
+	background-position: -206px -349px;
+}
+
+.icon-buttons .icon-split{
+	background-position: -156px -374px;
+}
+.icon-buttons .icon-revoke-split{
+	background-position: -182px -374px;
+}
+.icon-buttons .icon-start{
+	background-position: -206px -374px;
+}
+.icon-buttons .icon-send-again{
+	background-position: -128px -403px;
+}
+.icon-buttons .icon-first-trial{
+	background-position: -156px -402px;
+}
+.icon-buttons .icon-last-trial{
+	background-position: -182px -402px;
+}
+.icon-buttons .icon-invalid-certificate{
+	background-position: -206px -402px;
+}
+.icon-buttons .icon-confirm{
+	background-position: -127px -430px;
+}
+.icon-buttons .icon-document-view{
+	background-position: -156px -430px;
+}
+.icon-buttons .icon-status-view{
+	background-position: -182px -430px;
+}
+.icon-buttons .icon-revoke-confirm{
+	background-position: -209px -430px;
+}
+.icon-buttons .icon-pay-apply{
+	background-position: -182px -461px;
+}
+.icon-buttons .icon-pay-edit{
+	background-position: -210px -462px;
+}
+.icon-buttons .icon-revoke-generation{
+	background-position: -210px -490px;
+}
+.icon-buttons .icon-revoke-register{
+	background-position: -182px -490px;
+}
+.icon-buttons .icon-revoke-issued{
+	background-position: -156px -490px;
+}
+.icon-buttons .icon-details{
+	background-position: -127px -490px;
+}
+.icon-buttons .icon-co-organized{
+	background-position: -127px -521px;
+}
+.icon-buttons .icon-ransformation{
+	background-position: -156px -521px;
+}
+.icon-buttons .icon-batchinput{
+	background-position: -183px -521px;
+}
+.icon-buttons .icon-save{
+	background-position: -212px -521px;
+}
+.icon-buttons .icon-close{
+	background-position: -127px -550px;
+}
+.icon-buttons .icon-recommend{
+	background-position: -156px -550px;
+}
+.icon-buttons .icon-export{
+	background-position: -184px -550px;
+}
+.icon-buttons .icon-selection{
+	background-position: -213px -550px;
+}
+.icon-buttons .icon-reset-rule{
+	background-position: -127px -578px;
+}
+.icon-buttons .icon-credit-rating{
+	background-position: -156px -578px;
+}
+.icon-buttons .icon-expert-pro-ass{
+	background-position: -186px -579px;
+}
+.icon-buttons .icon-examination-records{
+	background-position: -214px -579px;
+}
+/*12-2 纯图标按钮组*/
+.iconmenu{
+	display: inline-block;
+	height: 18px;
+	width: 18px;
+	background: url(./images/iconbtn.png) no-repeat;
+	cursor: pointer;
+	margin-right: 4px;
+    margin-top: 7px;
+}
+.icon-submit{
+	background-position: -5px -6px;
+}
+.icon-revoke-submit{
+	background-position: -35px -6px;
+}
+.icon-edit{
+	background-position: -5px -38px;
+}
+.icon-prints{
+	background-position: -36px -38px;
+}
+.icon-details{
+	background-position: -6px -70px;
+}
+.icon-input{
+	background-position: -36px -70px;
+}
+.icon-delete{
+	background-position: -5px -101px;
+}
+.icon-hanging{
+	background-position: -38px -101px;
+}
+.icon-back-prev{
+	background-position: -6px -129px;
+}
+.icon-cancel-back{
+	background-position: -36px -129px;
+}
+.icon-back-first{
+	background-position: -6px -157px;
+}
+.icon-examine{
+	background-position: -126px -9px;
+}
+.icon-examine{
+	background-position: -8px -186px;
+}
+.icon-cancel-examine{
+	background-position: -36px -186px;
+}
+.icon-set{
+	background-position: -9px -216px;
+}
+.icon-consult{
+	background-position: -37px -216px;
+}
+.icon-execution{
+	background-position: -10px -278px;
+}
+.icon-issued{
+	background-position: -10px -247px;
+}
+.icon-cancel-issued{
+	background-position: -37px -247px;
+}
+.icon-generate{
+	background-position: -37px -278px;
+}
+.icon-preview{
+	background-position: -10px -308px;
+}
+.icon-signature{
+	background-position: -38px -308px;
+}
+.icon-reduction{
+	background-position: -10px -337px;
+}
+.icon-copys{
+	background-position: -38px -337px;
+}
+
+.icon-void{
+	background-position: -38px -363px;
+}
+.icon-copy-entry{
+	background-position: -10px -390px;
+}
+.icon-audit-signature{
+	background-position: -38px -390px;
+}
+.icon-initials-signatures{
+	background-position: -38px -416px;
+}
+.icon-signs-censorship{
+	background-position: -9px -363px;
+}
+.icon-autograph{
+	background-position: -10px -416px;
+}
+.icon-cancel-signature{
+	background-position: -10px -445px;
+}
+
+.icon-handles{
+	background-position: -10px -473px;
+}
+.icon-feedbacks{
+	background-position: -11px -506px;
+}
+.icon-circulate-notices{
+	background-position: -11px -537px;
+}
+.icon-send-outs{
+	background-position: -38px -444px;
+}
+.icon-sign-sends{
+	background-position: -37px -473px;
+}
+.icon-registers{
+	background-position: -37px -505px;
+}
+.icon-recovers{
+	background-position: -37px -536px;
+}
+.icon-cancel-prints{
+	background-position: -10px -566px;
+}
+.icon-cancel-sign{
+	background-position: -70px -6px;
+}
+.icon-cancel-censorship{
+	background-position: -70px -38px;
+}
+.icon-query-state{
+	background-position: -70px -70px;
+}
+
+.icon-view-detail{
+	background-position: -70px -101px;
+}
+.icon-refund-redials{
+	background-position: -70px -129px;
+}
+.icon-batch-deactivations{
+	background-position: -70px -157px;
+}
+.icon-cancellations{
+	background-position: -71px -185px;
+}
+.icon-sends-again{
+	background-position: -38px -566px;
+}
+.icon-first-trials{
+	background-position: -71px -216px;
+}
+.icon-last-trials{
+	background-position: -71px -247px;
+}
+.icon-invalid-certificates{
+	background-position: -70px -277px;
+}
+.icon-confirms{
+	background-position: -69px -308px;
+}
+.icon-document-views{
+	background-position: -70px -363px;
+}
+.icon-status-views{
+	background-position: -71px -390px;
+}
+.icon-revoke-confirms{
+	background-position: -70px -337px;
+}
+.icon-warning-red{
+	background-position: -253px -57px;
+}
+.icon-warning-yellow{
+	background-position: -253px -88px;
+}
+.icon-warning-blue{
+	background-position: -253px -118px;
+}
+.icon-warning-orange{
+	background-position: -253px -149px;
+}
+.icon-freeze-insert{
+	background-position: -71px -473px;
+}
+.icon-unfreeze-insert{
+	background-position: -71px -502px;
+}
+.icon-freeze-edit {
+    background-position: -71px -530px;
+}
+
+.icon-unfreeze-edit {
+    background-position: -71px -562px;
+}
+.icon-pay-mark {
+	background-position: -10px -595px;
+}
+.icon-update-remark{
+	background-position: -39px -594px
+}
+.icon-move-up{
+	background-position: -10px -624px;
+}
+.icon-move-down{
+	background-position: -39px -624px;
+}
+.icon-patch-input{
+	background-position: -72px -624px;
+}
+.icon-look-file{
+	background-position: -10px -656px;
+}
+.icon-re-select{
+	background-position: -42px -656px;
+}
+.icon-select-leader{
+	background-position: -73px -656px;
+}
+/*素描 示意图  */
+.sketchBig{
+	display: inline-block;
+	height: 70px;
+	width: 70px;
+	background:  url(./images/ys_icon.png) no-repeat;
+	cursor: pointer;
+}
+.sketchBig-basics{
+	background-position: -15px -210px;
+}
+.sketchBig-information{
+	background-position: -107px -210px;
+}
+.sketchBig-drug{
+	background-position: -197px -210px;
+}
+.sketchBig-ifad{
+	background-position: -287px -210px;
+}
+.sketchBig-daily{
+	background-position: -377px -210px;
+}
+.sketchBig-else{
+	background-position: -467px -210px;
+}
+.sketchBig-more{
+	background-position: -557px -210px;
+}
+
+.sketchBig-select{
+	display: inline-block;
+	height: 70px;
+	width: 70px;
+	background:  url(./images/ys_icon.png) no-repeat;
+	cursor: pointer;
+}
+.sketchBig-basics-select{
+	background-position: -15px -300px;
+}
+.sketchBig-information-select{
+	background-position: -107px -300px;
+}
+.sketchBig-drug-select{
+	background-position: -197px -300px;
+}
+.sketchBig-ifad-select{
+	background-position: -287px -300px;
+}
+.sketchBig-daily-select{
+	background-position: -377px -300px;
+}
+.sketchBig-else-select{
+	background-position: -467px -300px;
+}
+.sketchBig-more-select{
+	background-position: -557px -300px;
+}
+
+.sketchSmall{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background:  url(./images/ys_icon.png) no-repeat;
+	cursor: pointer;
+}
+.sketchSmall-policy{
+	background-position: -29px -78px;
+}
+.sketchSmall-cause{
+	background-position: -96px -78px;
+}
+.sketchSmall-transferpay{
+	background-position: -160px -78px;
+}
+.sketchSmall-daily{
+	background-position: -227px -78px;
+}
+
+.sketchSmall-select{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background:  url(./images/ys_icon.png) no-repeat;
+	cursor: pointer;
+}
+.sketchSmall-policy-select{
+	background-position: -29px -144px;
+}
+.sketchSmall-cause-select{
+	background-position: -96px -144px;
+}
+.sketchSmall-transferpay-select{
+	background-position: -160px -144px;
+}
+.sketchSmall-daily-select{
+	background-position: -227px -144px;
+}
+.icon-un-lock{
+	background-position: -72px -594px;
+}
+/* 上一页、下一页 图标 */
+.text-prev{
+	display:inline-block;
+	width:72px;
+	height:30px;
+	padding-right:8px;
+	background:transparent url('./images/ys_icon.png') no-repeat -158px -461px;
+	color:#fff;
+	text-align:right;
+	line-height:30px;
+	cursor:pointer;
+}
+.text-next{
+	display:inline-block;
+	width:72px;
+	height:30px;
+	padding-left:8px;
+	background:transparent url('./images/ys_icon.png') no-repeat -254px -461px;
+	color:#fff;
+	text-align:left;
+	line-height:30px;
+	cursor:pointer;
+}
+
+/*调栏*/
+.uf-navmenu-light::before{
+	color: #108EE9;
+}
+.ip-content-btn-area {
+	background-color: #EBF2F9;
+}
+.modal-header {
+	background-color: #108EE9;
+}
+.modal-footer{
+	padding:5px 15px;
+}
+
+/*.u-grid tr:hover {
+    background: #E8F5FE !important;
+}*/
+.u-pagination > .active > a,
+.u-pagination > .active > span,
+.u-pagination > .active > a:hover,
+.u-pagination > .active > span:hover,
+.u-pagination > .active > a:focus,
+.u-pagination > .active > span:focus{
+	background-color: #108EE9;
+	border-color: #D9D9D9;
+}

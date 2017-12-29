@@ -1,0 +1,73 @@
+.wrapper{
+	padding:10px;
+}
+.input-other{
+	position:relative;
+}
+.icon-other{
+	position: absolute;
+    right: 16px;
+    background: #4A90E2;
+    height: 26px;
+    width: 26px;
+    line-height: 29px;
+    text-align: center;
+    font-size: 16px;
+    color:#fff;
+}
+select.form-control{
+	padding: 0px 12px;
+}
+#addBudgetItem .control-label{
+	text-align:right;
+}
+#addBudgetItem .modal-body{
+	padding-left:0px;
+}
+#addBudgetItem .modal-dialog{
+	width:500px;
+}
+#addBudgetItem .col-md-9{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.view-Tree{
+	height:360px;
+	overflow:auto;
+}
+/* .addviewInput{
+	width:210px;
+} */
+.allbisRelationTree .modal-body {
+	height: 400px;
+}
+.allbisRelationTree .modal-dialog{
+	width: 400px
+}
+.allbisRelationTree .tree-area{
+	height: 350px;
+    overflow: auto;
+    clear: both;
+    border: 1px solid #E5E5E5;
+}
+.allbisRelationTree .ip-input-group input{
+	height: 25px;
+}
+.allbisRelationTree .top-button,
+.allbisRelationTree .top-button-next{
+	height: 25px;
+	padding: 0px 10px;
+	margin: 0px 5px;
+	font-size: 12px;
+}
+
+.allbisRelationTree .top-button .search-addon{
+	margin-left: 5px;
+}
+.allbisRelationTree .ip-input-group button.btn-primary{
+	margin-left: 10px;
+    background: #4A90E2;
+    height: 25px;
+    padding: 0px 10px;
+    margin-right: 10px;
+}

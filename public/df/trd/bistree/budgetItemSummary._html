@@ -1,0 +1,191 @@
+<!-- 预算项目树 -->
+	<div>
+		<div class="modal fade allbisRelationTree" id="myModalBISTree" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close" data-bind="click:closeBISTree()">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalBisLabel">预算项目树</h4>
+					</div>
+					<div class="modal-body">
+						<!-- <label for="" class="col-md-2 col-sm-2 text-left"
+							style="padding: 0;margin-right: 5px; font-weight:normal">快速定位</label>
+						<input type="hidden" id="choiced-node"> <input
+							type="hidden" id="aim">
+						<div class="col-md-4 col-sm-4 ip-input-group">
+							<input type="text" class="form-control" id="user-write2">
+						</div>
+						<button id="btn-radio-data-tree"
+							class="btn btn-primary top-button" type="button" name="btnFind"
+							data-bind="click:viewQuery2">查找</button>
+						<button id="nex-radio-data-tree"
+							class="btn btn-default top-button-next" style="margin-left:10px;"
+							type="button" name="btnNext" data-bind="click:viewNext2">下一个</button> -->
+							
+						<div class="">
+							<label for="addviewInput" >快速定位:</label>
+							<input type="text" name="addviewInputbis" id="addviewInputbis" class="addviewInput" />
+						    <button type="button" class="btn btn-primary quik-find" data-bind="click:viewQuery2">查找</button>
+					        <button type="button" class="btn btn-primary quik-next" data-bind="click:viewNext2">下一个</button>
+						</div>
+							
+						<div class="view-Tree">
+						<div id="manageTreeBis" style="padding-top: 0;" class="ztree"
+								u-meta='{"id":"bisTree","data":"bistreeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"treeSetting"}'></div>
+						
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="radio pull-left" id="isRelationPc">
+							<label><input type="checkbox" name="optionsCheck"
+								value="" checked onclick="ip.TreeIsIncliudChild();">包含下级</label>
+						</div>
+						<div id="modal-tree-footer-btn" class="fr">
+							<button id="sur-radio-data-tree" type="button"
+								class="btn btn-primary" name="btnSure"
+								data-bind="click:sureSelectTree">确定</button>
+							<button type="button" class="btn btn-primary" id="addBis" data-bind="click:addBis">新增</button>	
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal" onclick="ip.closeAssitTree()">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 新增模态框addButtonModal -->
+	<div class="modal fade" id="addBudgetItem" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">
+						<span id="project-title" style="padding-left:5px;">新增预算项目</span>
+					</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label  class="col-md-3 control-label"><span style="color:#d9534f;">*</span>项目编码:</label>
+						<div class="col-md-9">
+							<input type="text" name="" class="form-control" id="pro-code" data-bind="event:{change: changeProCode}">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label  class="col-md-3 control-label"><span style="color:#d9534f;">*</span>项目名称:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="pro-name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-sm-3 control-label">指定父级:</label>
+						<div class="input-group col-sm-9 modal-input-group">
+							<input id="belong-parent" type="text" class="form-control" value="" readonly="readonly"> 
+							<span class="input-control-feedback" onclick="clearTextForBis('belong-parent')">X</span>
+							<span class="input-group-addon" data-bind="click:showTreePar" data-toggle="modal" data-target="#addChoiceModel" data-whatever="pa">
+								<span class="glyphicon glyphicon-option-horizontal"></span> 
+							</span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label  class="col-md-3 control-label">是否共用项目:</label>
+						<div class="col-md-9">
+							<select class="form-control" id = "is-public" data-bind="event:{change: changeSelect}">
+								<option value="0">否</option>
+								<option value="1">是</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label  class="col-md-3 control-label">是否启用:</label>
+						<div class="col-md-9">
+							<select class="form-control" id = "is-use">
+								<option value="1">是</option>
+								<option value="0">否</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label  class="col-md-3 control-label"><span style="color:#d9534f;">*</span>项目分类:</label>
+						<div class="input-group col-sm-9 modal-input-group">
+							<input type="text" class="form-control" id="belong-project" >
+							<span class="input-control-feedback" onclick="clearTextForBis('belong-project')">X</span>
+							<span class="input-group-addon" data-bind="click:showTreePro" name="manageTreePro" data-toggle="modal" data-target="#addChoiceModel" data-whatever="pro">
+								<span class="glyphicon glyphicon-option-horizontal"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label  class="col-md-3 control-label"><span style="color:#d9534f;">*</span>业务处室:</label>
+						<div class="input-group col-sm-9 modal-input-group">
+							<input type="text" class="form-control" id="belong-firm" >
+							<span class="input-control-feedback" onclick="clearTextForBis('belong-firm')">X</span>
+							<span class="input-group-addon" data-bind="click:showTreeSer" name="manageTreeSer" data-toggle="modal" data-target="#addChoiceModel" data-whatever="ser">
+								<span class="glyphicon glyphicon-option-horizontal"></span> 
+							</span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-sm-3 control-label"><span style="color:#d9534f;">*</span>预算单位:</label>
+						<div class="input-group col-sm-9 modal-input-group">
+							<input id="belong-unit" type="text" class="form-control" value="" > 
+							<span class="input-control-feedback" onclick="clearTextForBis('belong-unit')">X</span>
+							<span class="input-group-addon" data-bind="click:showTreeUnit" name="manageTreeUnit" data-toggle="modal" data-target="#addChoiceModel" data-whatever="unit">
+								<span class="glyphicon glyphicon-option-horizontal"></span> 
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bind="click:sureItem" >确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 辅助录入树模态框addChoiceModel -->
+	<div class="modal fade allbisRelationTree" id="addChoiceModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabelAll">
+						<span id="addtreeTitle" style="padding-left:5px;">内容选择</span>
+					</h4>
+				</div>
+				<div class="modal-body">
+				    <div class="">
+						<label for="addviewInput" >模糊查询:</label>
+						<input type="text" name="addviewInput" id="addviewInput" class="addviewInput" />
+					    <button type="button" class="btn btn-primary quik-find" data-bind="click:viewQuery">查找</button>
+				        <button type="button" class="btn btn-primary quik-next" data-bind="click:viewNext">下一个</button>
+					</div>
+					<div class = "view-Tree">
+					    <div id="manageTreePa" class="ztree"
+                         	u-meta='{"id":"manageTreePa","data":"bistreeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"treePaSetting"}'></div>
+						<div id="manageTreeSer" class="ztree"
+                         	u-meta='{"id":"manageTreeSer","data":"treeSerDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"treeSerSetting"}'></div>
+						<div id="manageTreeSer" class="ztree"
+                         	u-meta='{"id":"manageTreePro","data":"treeProDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"treeProSetting"}'></div>
+                         <div id="manageTreeSer" class="ztree"
+                         	u-meta='{"id":"manageTreeUnit","data":"treeUnitDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"treeUnitSetting"}'></div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  data-bind="click: sureNode" >确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	

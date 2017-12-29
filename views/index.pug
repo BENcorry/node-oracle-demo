@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<div id="app" class="container g-mn" style="padding: 10px 0;">
+  <div style="padding-bottom: 10px;">
+    <button @click="add" data-toggle="modal" data-target="#modal1">新增</button>
+    <button @click="update">修改</button>
+    <button @click="del">删除</button>
+  </div>
+  <div class="g-mnc">
+    <div class="g-left">
+      <div class="ztree" id="ztree1"></div>
+    </div>
+    <div class="g-right">
+      <table class="table">
+        <tr>
+          <td>名称</td>
+          <td>编码</td>
+          <td>操作</td>
+        </tr>
+        <tr v-for="o in list">
+          <td v-text="o.name"></td>
+          <td v-text="o.code"></td>
+          <td>
+            <button @click="del(o)">删除</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="modal fade in" id="modal1" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          新增
+          <span class="close" data-dismiss="modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">要素编码</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">要素名称</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label"></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">名称</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="lib/jquery-1.12.3.min.js"></script>
+<script src="lib/zTree_v3/js/jquery.ztree.core.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/vue.js"></script>
+<script>
+  var treeSetting = {
+    data: {
+      simpleData: {
+        enable: true,
+        idKey: 'id',
+        pIdKey: 'pid',
+        rootPId: null
+      }
+    },
+    callback: {
+      onClick: function (e, treeId, treeNode) {
+        vm.list = treeNode.children && treeNode.children.length ? treeNode.children : [treeNode]
+      },
+    },
+  }
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      list: [],
+      rgList: [],
+    },
+    methods: {
+      add: function () {
+
+      },
+      del: function (o) {
+        return
+        var data = {
+          chr_id: o.id
+        }
+        $.ajax({
+          url: '/rg/del',
+          type: 'delete',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          success() {
+            console.log('删除成功')
+          },
+          error() {
+          }
+        })
+      },
+
+      update: function () {
+        var data = {
+          chr_name: '测试地区2',
+          chr_code: '10000',
+          parent_id: 'CE2C0208C314405FB04173014C2BCE96', // 6529
+          level_num: 3,
+          enabled: 1,
+          chr_id: '{0A02D3DF-596B-41B1-B94C-42F087D690E4}',
+        }
+        $.ajax({
+          url: '/rg',
+          type: 'PUT',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          success(data) {
+            console.log('修改成功')
+            console.log(data)
+          },
+          error() {
+          }
+        })
+      },
+    },
+    mounted: function () {
+      getRg()
+    },
+    watch: {
+      rgList: function (list) {
+        this.$nextTick(function () {
+          $.fn.zTree.init($('#ztree1'), treeSetting, list)
+        })
+      },
+    },
+  })
+
+  function getRg() {
+    $.ajax({
+      url: '/rg',
+      success(data) {
+        vm.rgList = data
+      },
+      error() {
+      }
+    })
+  }
+
+</script>
+</body>
+</html>

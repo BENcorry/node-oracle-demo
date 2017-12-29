@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>要素管理</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./elementDetail.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody">
+			<div class="bodySize row">
+				<div class='tree-block col-md-3'>
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询"
+								aria-describedby="basic-addon1"
+								data-bind="event:{keyup:quickQuery}"
+								onkeydown='if(event.keyCode==13){menuTreeNext();}'
+								id="quickquery"> <span class="input-group-addon"
+								onclick="menuTreeNext()"><span
+								class="glyphicon glyphicon-search"></span> </span>
+						</div>
+					</div>
+					<div class="menuTree">
+						<div id="detailConfigTree" class="ztree"
+							u-meta='{"id":"detailConfigTree","data":"treeDataTable","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+				<div class='menu-tabs col-md-9'>
+					<div id="gridpanel" style="display: none;">
+						<div style="height: 40px;" class="row">
+							<div class='col-md-6'>
+								<button id="addViewBtn1" type="button"
+									class="btn btn-primary add-btn" data-toggle="modal"
+									data-bind="click: addbtn">新&nbsp;增</button>
+								<button id="editViewBtn1" type="button"
+									class="btn btn-primary add-btn" data-toggle="modal"
+									data-bind="click: editbtn">修&nbsp;改</button>
+								<button id="delViewBtn1" type="button"
+									class="btn btn-danger del-btn" data-bind="click: delbtn">删&nbsp;除</button>
+							</div>
+							<div class="col-md-6 input-group">
+								<input type="text" class="form-control" placeholder="模糊查询"
+									aria-describedby="basic-addon1" onkeyup="fuzzquery1(this.id)"
+									id="fuzzquery2"> <span class="input-group-addon"
+									onclick="fuzzquery1('fuzzquery2')"><span
+									class="glyphicon glyphicon-search"></span> </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class=' tree-block1 col-md-3'>
+								<div class="form-group search-form" style="margin: 5px;">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="模糊查询"
+											aria-describedby="basic-addon1"
+											data-bind="event:{keyup:quickQuery1}"
+											onkeydown='if(event.keyCode==13){menuTreeNext1();}'
+											id="quickquery1"> <span class="input-group-addon"
+											onclick="menuTreeNext1()"><span
+											class="glyphicon glyphicon-search"></span> </span>
+									</div>
+								</div>
+								<div class="menuTree1">
+									<div id="detailConfigTree1" class="ztree"
+										u-meta='{"id":"detailConfigTree1","data":"treeDataTable1","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting1"}'></div>
+								</div>
+							</div>
+							<div id="elegrid" class='col-md-9'></div>
+						</div>
+					</div>
+					<div id="formpanel">
+						<div class="btn-head row">
+							<div class="col-md-6">
+								<button id="addViewBtn" type="button" class="btn btn-primary"
+									ta-target="#addElementModal" data-toggle="modal"
+									data-bind="click: addviewSubmit">增加要素</button>
+								<button id="editViewBtn" type="button" class="btn btn-primary"
+									data-bind="click: editviewSubmit">修改要素</button>
+								<button id="editViewBtn" type="button" class="btn btn-primary"
+									data-bind="click: enableSubmit">启用状态</button>
+								<button id="delViewBtn" type="button"
+									class="btn  btn-danger del-btn"
+									data-bind="click: delviewSubmit">删除要素</button>
+								<button id="refreshBtn" type="button" class="btn btn-primary"
+									data-bind="click: refreshSubmit">要素缓存刷新</button>
+							</div>
+							<div class="col-md-6 input-group">
+								<input type="text" class="form-control" placeholder="模糊查询"
+									aria-describedby="basic-addon1" onkeyup="fuzzquery(this.id)"
+									id="fuzzquery"> <span class="input-group-addon"
+									onclick="fuzzquery('fuzzquery')"><span
+									class="glyphicon glyphicon-search"></span> </span>
+							</div>
+						</div>
+						<div type="text" class="menu-grid"
+							u-meta='{"id":"write-grid","data":"gridDataTable1","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"onDblClickFun":"editviewSubmit","height":500,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+							<div
+								options='{"field":"czgb_code","dataType":"String","title":"标准码","editType":"string"}'></div>
+							<div
+								options='{"field":"ele_code","dataType":"String","title":"要素编码","editType":"string"}'></div>
+							<div
+								options='{"field":"ele_source","dataType":"String","title":"要素表","editType":"string"}'></div>
+							<div
+								options='{"field":"ele_name","dataType":"String","title":"要素中文名","editType":"string"}'></div>
+							<div
+								options='{"field":"enabled","dataType":"String","title":"启用","editOptions":{"id":"combobox1","type":"combo","datasource":"enabledItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+							<div
+								options='{"field":"is_rightfilter","dataType":"String","title":"控制数据权限","editOptions":{"id":"combobox1","type":"combo","datasource":"isrightfilterItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+							<div
+								options='{"field":"is_operate","dataType":"String","title":"是否平台维护","editOptions":{"id":"combobox1","type":"combo","datasource":"isoperateItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addElementModal -->
+	<div class="modal fade" id="addElementModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:800px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增要素信息</h4>
+				</div>
+				<div class="modal-body clearfix form-block2">
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">标准码:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="czgb_code">
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>要素编码:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="ele_code">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>要素表:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="ele_source">
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>要素中文名:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="ele_name">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>所属系统:</label>
+							<div class="col-md-8">
+								<select class="form-control" id="sys_id">
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">是否启用:</label>
+							<div class="col-md-8">
+								<label><input id="enabled" type="checkbox" value=""
+									checked> </label>
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">数据权限:</label>
+							<div class="col-md-8">
+								<label><input type="radio" name="optionsRadios" id="0"
+									value="0" checked>不控制</label> <label><input
+									type="radio" name="optionsRadios" id="1" value="1">控制</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">平台维护:</label>
+							<div class="col-md-8">
+								<label><input type="radio" name="optionsRadios1" id="1"
+									value="1" checked>平台维护</label> <label><input
+									type="radio" name="optionsRadios1" id="0" value="0">非平台维护</label>
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">类型:</label>
+							<div class="col-md-8">
+								<label><input type="radio" name="optionsRadios2" id="0"
+									value="0" checked>表 </label><label><input type="radio"
+									name="optionsRadios2" id="1" value="1">视图</label>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div>
+						<div>
+							<button type="button" class="btn btn-primary"
+								data-bind="click:rowCheck">个性列选择</button>
+							<button type="button" class="btn btn-danger del-btn"
+								data-bind="click:delgrid2">删&nbsp;除</button>
+						</div>
+						<div type="text" class="menu-grid"
+							u-meta='{"id":"write-grid1","data":"gridDataTable2","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"onDblClickFun":"editviewSubmit","height":140,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+							<div
+								options='{"field":"code","dataType":"String","title":"编码","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_name","dataType":"String","title":"名称","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_colname","dataType":"String","title":"字段名","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"enablenull","dataType":"String","title":"是否必填","editType":"string","renderType":"changeType","width": 150}'></div>
+							<div
+								options='{"field":"dataEdit","dataType":"String","title":"维护数据","editType":"string","renderType":"dataType","width": 150}'></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure3">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="addCol" style="display:none">
+			<div id='add-config-modal' class='bs-modal-sm'>
+				<div class='modal-dialog modal-sm'>
+					<div class='modal-content modal-content-bc' style="width:400px">
+						<div class='modal-header'>
+							<button type='button' class='close closeBtn '
+								data-bind="click: addColhide"
+								data-bind="click: cencelColumnButton">
+								<span>&times;</span>
+							</button>
+							<h4 class='modal-title'>列信息</h4>
+						</div>
+						<div id="col_body" class='modal-body'>
+
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="模糊查询"
+									aria-describedby="basic-addon1"
+									data-bind="event:{keyup:quickQuery2}"
+									onkeydown='if(event.keyCode==13){menuTreeNext2();}'
+									id="quickquery2"> <span class="input-group-addon"
+									onclick="menuTreeNext2()"><span
+									class="glyphicon glyphicon-search"></span> </span>
+							</div>
+							<div class="form-block3">
+								<div id="detailConfigTree" class="ztree"
+									u-meta='{"id":"addColTree","data":"treeDataTable2","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"addColSetting"}'></div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="confirmColumnButton"
+								class="btn btn-primary" data-bind="click: addColEnsure">确定</button>
+							<button type="button" id="cencelColumnButton"
+								data-bind="click: addColhide" class="btn btn-primary">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- editElementModal -->
+	<div class="modal fade" id="editElementModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:800px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改要素信息</h4>
+				</div>
+				<div class="modal-body clearfix form-block2">
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<input type="hidden" class="form-control" id="chr_id"> <label
+								class="col-md-4 control-label">标准码:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="czgb_code1">
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>要素编码:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="ele_code1">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>要素表:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="ele_source1"
+									disabled>
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>要素中文名:</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="ele_name1">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label"><span
+								class="star-color">*</span>所属系统:</label>
+							<div class="col-md-8">
+								<select class="form-control" id="sys_id1">
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">是否启用:</label>
+							<div class="col-md-8">
+								<label><input id="enabled1" type="checkbox" value=""
+									checked> </label>
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">数据权限:</label>
+							<div class="col-md-8">
+								<label><input type="radio" name="options1Radios" id="0"
+									value="0" checked>不控制</label> <label><input
+									type="radio" name="options1Radios" id="1" value="1">控制</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">平台维护:</label>
+							<div class="col-md-8">
+								<label><input type="radio" name="options1Radios1" id="1"
+									value="1" checked>平台维护</label> <label><input
+									type="radio" name="options1Radios1" id="0" value="0">非平台维护</label>
+							</div>
+						</div>
+						<div class="form-group clearfix col-md-6">
+							<label class="col-md-4 control-label">类型:</label>
+							<div class="col-md-8">
+								<label><input type="radio" name="options1Radios2" id="0"
+									value="0" checked disabled>表 </label><label><input
+									type="radio" name="options1Radios2" id="1" value="1" disabled>视图</label>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div>
+						<div id="editbtn">
+							<button type="button" class="btn btn-primary"
+								data-bind="click:rowCheck1">个性列选择</button>
+							<button type="button" class="btn btn-danger del-btn"
+								data-bind="click:delgrid3">删&nbsp;除</button>
+							<input type="hidden" class="form-control" id="num"> <input
+								type="hidden" class="form-control" id="changeflag">
+						</div>
+						<div type="text" class="menu-grid"
+							u-meta='{"id":"write-grid2","data":"gridDataTable3","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"onDblClickFun":"editviewSubmit","height":160,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+							<div
+								options='{"field":"code","dataType":"String","title":"编码","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_name","dataType":"String","title":"名称","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"ele_colname","dataType":"String","title":"字段名","editType":"string","width": 150}'></div>
+							<div
+								options='{"field":"enablenull","dataType":"String","title":"是否必填","editType":"string","renderType":"changeType1","width": 150}'></div>
+							<div
+								options='{"field":"dataEdit","dataType":"String","title":"维护数据","editType":"string","renderType":"dataType1","width": 150}'></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: ensure4">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="addCol1" style="display:none">
+			<div id='add-config-modal' class='bs-modal-sm'>
+				<div class='modal-dialog modal-sm'>
+					<div class='modal-content modal-content-bc' style="width:400px">
+						<div class='modal-header'>
+							<button type='button' class='close closeBtn '
+								data-bind="click: addColhide1"
+								data-bind="click: cencelColumnButton">
+								<span>&times;</span>
+							</button>
+							<h4 class='modal-title'>列信息</h4>
+						</div>
+						<div id="col_body" class='modal-body'>
+
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="模糊查询"
+									aria-describedby="basic-addon1"
+									data-bind="event:{keyup:quickQuery3}"
+									onkeydown='if(event.keyCode==13){menuTreeNext3();}'
+									id="quickquery3"> <span class="input-group-addon"
+									onclick="menuTreeNext3()"><span
+									class="glyphicon glyphicon-search"></span> </span>
+							</div>
+							<div class="form-block3">
+								<div id="detailConfigTree" class="ztree"
+									u-meta='{"id":"addColTree1","data":"treeDataTable3","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"addColSetting1"}'></div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="confirmColumnButton"
+								class="btn btn-primary" data-bind="click: addColEnsure1">确定</button>
+							<button type="button" id="cencelColumnButton"
+								data-bind="click: addColhide1" class="btn btn-primary">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:800px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增要素信息</h4>
+				</div>
+				<div class="modal-body clearfix form-block4">
+					<div id="areaeidt"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:850px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改要素信息</h4>
+					<input type="hidden" class="form-control" id="hidechr_id">
+				</div>
+				<div class="modal-body clearfix form-block4">
+					<div id="areaeidt1"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: ensure2">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="/js/data.js"></script>
+<script src="./elementDetail.js"></script>
+</html>
